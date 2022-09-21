@@ -1,0 +1,18 @@
+{{ if or .Paginator.HasPrev .Paginator.HasNext }}
+  <section class="mx-auto max-w-sm md:max-w-3xl mt-5 md:mt-10">
+    {{ if .Paginator.HasPrev }}
+      <a href="{{ .Paginator.Prev.URL }}" class="text-white bg-gray-500 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-2 mb-2 float-left">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+      </a>
+    {{ end }}
+    {{ if .Paginator.HasNext }}
+      <a href="{{ .Paginator.Next.URL }}" class="text-white bg-gray-500 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-2 mb-2 float-right">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>        
+      </a>
+    {{ end }}
+  </section>
+{{ end }}

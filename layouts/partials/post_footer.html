@@ -1,0 +1,23 @@
+<section class="mx-auto max-w-sm md:max-w-3xl mt-5 md:mt-10 grid grid-cols-2 gap-2">
+  <div class="flex justify-start">
+    {{with .NextInSection}}
+      <a class="text-white bg-gray-500 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-2 mb-2 inline-flex" href="{{ .Permalink }}">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>        
+        {{ .Title | truncate 50 "..." }}
+      </a>
+    {{ end }}
+  </div>
+
+  <div class="flex justify-end">
+    {{with .PrevInSection}}
+      <a class="text-white bg-gray-500 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-2 mb-2 inline-flex" href="{{ .Permalink }}">
+        {{ .Title | truncate 50 "..."}}
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>        
+      </a>
+    {{ end }}
+  </div>
+</section>

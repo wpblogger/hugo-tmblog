@@ -1,0 +1,20 @@
+{{ define "header" }}
+  <header>
+    <h1>{{ .Title }}</h1>
+  </header>
+{{ end }}
+{{ define "main" }}
+  <main class="py-6">
+    <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight text-center">Home Page</h1>
+    {{ $pages := where (where site.RegularPages "Type" "in" site.Params.mainSections) "Params.hidden" "!=" true -}}
+    {{- range (.Paginate $pages).Pages -}}
+      <article class="flex flex-col shadow-md mx-auto max-w-sm md:max-w-3xl bg-white py-6 md:py-10 px-6 md:px-10 transform duration-500 hover:shadow-lg mt-5 md:mt-10 max-h-190 rounded-md">
+        <header class="">
+          <h2 class="font-extrabold text-3xl md:text-4xl mt-0 mb-4 md:mb-6 text-gray-800"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        </header>            
+        <section>{{ .Summary | safeHTML }}</section>
+      </article>
+    {{- end -}}
+    {{ partial "pagination.html" . }}
+  </main>
+{{ end }}

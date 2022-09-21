@@ -1,0 +1,11 @@
+{{ define "main" }}
+  <main class="py-6">
+    <header class="mx-auto max-w-sm md:max-w-3xl">
+      <h2  class="font-extrabold text-3xl md:text-4xl mt-0 mb-4 md:mb-6 text-gray-800">{{ .Title }}</h2>
+    </header> 
+    <article class="flex flex-col shadow-md mx-auto max-w-sm md:max-w-3xl bg-white py-6 md:py-10 px-6 md:px-10 transform duration-500 hover:shadow-lg mt-5 md:mt-10 max-h-190 rounded-md">   
+      <section class="content">{{ .Content }}</section>
+    </article>
+    {{ partial "post_footer.html" . }}
+  </main>
+{{ end }}
