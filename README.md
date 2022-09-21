@@ -1,4 +1,4 @@
-# Tyblog!
+# Tmblog!
 
 This is a blog theme for a new [Hugo](https://gohugo.io) project.
 
