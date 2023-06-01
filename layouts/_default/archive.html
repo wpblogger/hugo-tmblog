@@ -1,45 +1,46 @@
 {{ define "main" }}
-  <article class="theme-post">
-    <header class="entry-header simple-page">
-      <h2 class="entry-title h1">{{ .Title }}</h2>
-      <div class="post-letter">{{substr .Title 0 1}}</div>
-    </header>
-    <section>
-      {{ $type := .Type }}
-      {{ $.Scratch.Set "count" 1 }}
+  <main class="py-6">
+    <header class="mx-auto max-w-sm md:max-w-3xl">
+      <h2  class="font-extrabold text-3xl md:text-4xl mt-0 mb-4 md:mb-6 text-gray-800">{{ .Title }}</h2>
+    </header> 
+    <article class="flex flex-col shadow-md mx-auto max-w-sm md:max-w-3xl bg-white py-6 md:py-10 px-6 md:px-10 transform duration-500 hover:shadow-lg mt-5 md:mt-10 max-h-190 rounded-md">
+      <section class="content">
+        {{ $type := .Type }}
+        {{ $.Scratch.Set "count" 1 }}
 
-        {{ range (.Site.RegularPages.GroupByDate "2006") }}
-          {{ if and (gt .Key 1) (gt (where .Pages "Type" $type) 0) }}
+          {{ range (.Site.RegularPages.GroupByDate "2006") }}
+            {{ if and (gt .Key 1) (gt (where .Pages "Type" $type) 0) }}
 
-            {{ range (where .Pages "Type" $type) }}
-              {{ if (eq ($.Scratch.Get "count") 1) }}
-                {{ $.Scratch.Set "count" 0 }}
-                <h1 class="archive-year">{{ .Date.Format "2006" }}</h1>
-              {{ end }}
-            {{ end }}
-
-            {{ $.Scratch.Set "count" 1 }}
-
-              <ul class="taxonomy-list">
               {{ range (where .Pages "Type" $type) }}
-                {{ if (ne .Params.hidden true) }}
-                  <li>
-                    <a href="{{ .RelPermalink }}">
-                      <span>
-                        {{ if eq .Site.Language.Lang "ru" }}
-                          {{ .Date.Day }} {{ i18n .Date.Month }}.
-                        {{ else }}
-                          {{ i18n .Date.Month }}. {{ .Date.Day }}
-                        {{ end }}
-                      </span>{{ .Title }}
-                    </a>
-                  </li>
+                {{ if (eq ($.Scratch.Get "count") 1) }}
+                  {{ $.Scratch.Set "count" 0 }}
+                  <h2>{{ .Date.Format "2006" }}</h2>
                 {{ end }}
               {{ end }}
-              </ul>
 
+              {{ $.Scratch.Set "count" 1 }}
+
+                <ul>
+                {{ range (where .Pages "Type" $type) }}
+                  {{ if (ne .Params.hidden true) }}
+                    <li>
+                      <a href="{{ .RelPermalink }}">
+                        <span>
+                          {{ if eq .Site.Language.Lang "ru" }}
+                            {{ .Date.Day }} {{ i18n .Date.Month }}.
+                          {{ else }}
+                            {{ i18n .Date.Month }}. {{ .Date.Day }}
+                          {{ end }}
+                        </span>{{ .Title }}
+                      </a>
+                    </li>
+                  {{ end }}
+                {{ end }}
+                </ul>
+
+          {{ end }}
         {{ end }}
-      {{ end }}
-    </section>
-  </article>
+      </section>
+    </article>
+  </main>
 {{ end }}
