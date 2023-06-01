@@ -1,4 +1,4 @@
-baseURL = 'https://hugo-tyblog.netlify.app/'
+baseURL = 'https://hugo-tmblog.netlify.app/'
 languageCode = 'en-us'
 title = 'Demo Site'
 themesDir = '../../'
